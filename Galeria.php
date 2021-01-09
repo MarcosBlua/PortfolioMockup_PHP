@@ -11,17 +11,35 @@
 
 <div class="container">
 	<?php
-    	$imagenes = glob('Pinturas/*');
+		function esPar($numero){
+			if($numero % 2 == 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		$imagenes = glob('Pinturas/*');
+		$cont = 0;
+		$poscicion;
 
     	foreach($imagenes as $imagen){
-        	echo '<div class="ImgIzquierda">
+			if(esPar($cont)){
+				$poscicion = 'ImgIzquierda';
+			}else{
+				$poscicion = 'ImgDerecha';
+			}
+
+        	echo '<div class="'.$poscicion.'">
 			<a href="'.$imagen.'" target="_blank">
 				<img src="'.$imagen.'" width="100%"></img>
-				<div class="overlay"><div class="text"><h3>'.$imagen.'</h3></div></div>
+				<div class="overlay"><div class="text"><h3>'.substr(str_replace("Pinturas/", "", $imagen), 0, -4).'</h3></div></div>
 			</a>
 			</div>';
+
+			$cont = $cont + 1;
     	}
-	?>	
+	?>
 </div>
 	
 <?php
