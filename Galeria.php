@@ -18,7 +18,7 @@
 				return false;
 			}
 		}
-
+   		//No commitea viejo
 		$imagenes = glob('Pinturas/*');
 		$cont = 0;
 		$poscicion;
